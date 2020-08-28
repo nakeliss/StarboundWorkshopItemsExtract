@@ -14,8 +14,9 @@
     MinHeight="648"
     md:ShadowAssist.ShadowDepth="Depth3"
     Background="{x:Null}"
+    Icon="/icon.png"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d" Icon="/icon.png">
+    mc:Ignorable="d">
     <md:ColorZone VerticalAlignment="Stretch" Mode="Dark">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
@@ -290,7 +291,9 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             Background="#FF006A9E"
+                            Click="Chip_Click"
                             Content="Github"
+                            Cursor="Hand"
                             FontSize="18"
                             Icon="{md:PackIcon Kind=Github,
                                                Size=26}"
@@ -305,9 +308,11 @@
                             <Run Text="这是一个用于将Steam游戏 Starbound 的创意工坊订阅内容批量复制并重命名的小工具，为了方便开服时为服务端添加mod文件。" /><LineBreak />
                             <Run Text="*当前重命名只能将文件重命名为其在创意工坊内的ID" /><LineBreak />
                             <Run Text="*当前只会移动与重命名'.pak'后缀的文件" /><LineBreak />
-                            <Run Text="·将于未来版本（如果有）加入新功能：" /><LineBreak />
+                            <Run Text="将于未来版本（如果有）加入新功能：" /><LineBreak />
                             <Run Text="  【自动将文件重命名为其在创意工坊的标题】" /><LineBreak />
                             <Run Text="  【可以移动文件夹类型的mod】" /><LineBreak />
+                            <Run Text="" /><LineBreak />
+                            <Run Text="对本工具有任何疑问或者建议意见请移步Github - Issues" /><LineBreak />
                         </TextBlock>
                         <Label
                             HorizontalAlignment="Stretch"

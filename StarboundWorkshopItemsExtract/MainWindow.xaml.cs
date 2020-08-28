@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 
 namespace StarboundWorkshopItemsExtract
 {
@@ -160,17 +161,20 @@ namespace StarboundWorkshopItemsExtract
                         eBIS(true);
                     }));
                 };
+
+                btnExtract.IsEnabled = true;
             }
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show(ex.ToString());
             }
-            btnExtract.IsEnabled = true;
+            
         }
 
-        private void btnOpenGithub_Click(object sender, RoutedEventArgs e)
+        //打开github
+        private void Chip_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("");
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/nakeliss/StarboundWorkshopItemsExtract");
         }
     }
 }
