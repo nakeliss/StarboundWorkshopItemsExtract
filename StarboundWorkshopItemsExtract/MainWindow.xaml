@@ -1,0 +1,330 @@
+﻿<Window
+    x:Class="StarboundWorkshopItemsExtract.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:input="clr-namespace:System.Windows.Input;assembly=PresentationCore"
+    xmlns:local="clr-namespace:StarboundWorkshopItemsExtract"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    Title="StarboundWorkshopItemsExtract"
+    Width="900"
+    Height="600"
+    MinWidth="900"
+    MinHeight="648"
+    md:ShadowAssist.ShadowDepth="Depth3"
+    Background="{x:Null}"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d" Icon="/icon.png">
+    <md:ColorZone VerticalAlignment="Stretch" Mode="Dark">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <GroupBox
+                Margin="10,10,10,10"
+                md:ColorZoneAssist.Background="#ff202020"
+                md:ColorZoneAssist.Foreground="White"
+                md:ColorZoneAssist.Mode="Custom"
+                md:ShadowAssist.ShadowDepth="Depth3"
+                Header="Setings"
+                Style="{DynamicResource MaterialDesignCardGroupBox}">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <md:PackIcon
+                                Width="32"
+                                Height="32"
+                                VerticalAlignment="Center"
+                                Kind="Cog" />
+                            <TextBlock
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                <Grid Margin="0,5,0,0">
+                    <StackPanel VerticalAlignment="Top" Orientation="Vertical">
+                        <Label
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Content="----------源文件设置----------"
+                            FontSize="14" />
+                        <TextBox
+                            x:Name="fieldSteamLibraryFolderPath"
+                            Height="40"
+                            Margin="0,5,0,0"
+                            Padding="0,-3,0,-3"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            md:HintAssist.Background="#FF424242"
+                            md:HintAssist.FloatingScale="0.8"
+                            md:HintAssist.Hint="SteamLibraryFolderPath"
+                            md:TextFieldAssist.TextBoxViewMargin="0 0 0 0"
+                            Background="{x:Null}"
+                            FontSize="16"
+                            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                            Text=""
+                            TextChanged="fieldSteamLibraryFolderPath_TextChanged" />
+                        <Button
+                            x:Name="btnGetSteamLibraryFolderPath"
+                            Width="34"
+                            Height="34"
+                            Margin="0,-37,3,0"
+                            Padding="0,0,0,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Click="btnGetSteamLibraryFolderPath_Click"
+                            Content="{md:PackIcon Kind=FolderOutline,
+                                                  Size=22}"
+                            Cursor="Hand"
+                            Focusable="False"
+                            FontSize="16"
+                            Style="{StaticResource MaterialDesignOutlinedButton}" />
+                        <TextBox
+                            x:Name="fieldGameID"
+                            Height="40"
+                            Margin="0,15,0,20"
+                            Padding="0,-3,0,-3"
+                            VerticalAlignment="Top"
+                            VerticalContentAlignment="Center"
+                            md:HintAssist.Background="#FF424242"
+                            md:HintAssist.FloatingScale="0.8"
+                            md:HintAssist.HelperText="Default ID: 211820"
+                            md:HintAssist.Hint="GameID"
+                            md:TextFieldAssist.TextBoxViewMargin="0 0 0 0"
+                            Background="{x:Null}"
+                            FontSize="16"
+                            InputMethod.IsInputMethodEnabled="False"
+                            Loaded="fieldGameID_Loaded"
+                            PreviewTextInput="fieldContentID_PreviewTextInput"
+                            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                            Text=""
+                            TextChanged="fieldGameID_TextChanged" />
+                    </StackPanel>
+                    <StackPanel
+                        Margin="0,148,0,0"
+                        VerticalAlignment="Top"
+                        Orientation="Vertical">
+                        <Label
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Content="----------输出设置----------"
+                            FontSize="14" />
+                        <TextBox
+                            x:Name="fieldOutputFolderPath"
+                            Height="40"
+                            Padding="0,-3,0,-3"
+                            VerticalContentAlignment="Center"
+                            md:HintAssist.Background="#FF424242"
+                            md:HintAssist.FloatingScale="0.8"
+                            md:HintAssist.Hint="OutputFolderPath"
+                            md:TextFieldAssist.TextBoxViewMargin="0 0 0 0"
+                            Background="{x:Null}"
+                            FontSize="16"
+                            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                            Text=""
+                            TextChanged="fieldSteamLibraryFolderPath_TextChanged" />
+                        <Button
+                            x:Name="btnGetOutputFolderPath"
+                            Width="34"
+                            Height="34"
+                            Margin="0,-37,3,0"
+                            Padding="0,0,0,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Click="btnGetOutputFolderPath_Click"
+                            Content="{md:PackIcon Kind=FolderOutline,
+                                                  Size=22}"
+                            Cursor="Hand"
+                            Focusable="False"
+                            FontSize="16"
+                            Style="{StaticResource MaterialDesignOutlinedButton}" />
+                    </StackPanel>
+                    <Grid
+                        Height="38"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Bottom">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            x:Name="btnExtract"
+                            Grid.Column="1"
+                            Margin="10,0,10,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Click="btnExtract_Click"
+                            Content="提取"
+                            FontSize="16"
+                            Style="{StaticResource MaterialDesignOutlinedButton}" />
+                        <Button
+                            x:Name="btnInspect"
+                            Margin="10,0,10,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Click="btnInspect_Click"
+                            Content="检查"
+                            FontSize="16"
+                            Style="{StaticResource MaterialDesignOutlinedButton}" />
+                    </Grid>
+                    <Grid
+                        Height="200"
+                        Margin="0,0,0,40"
+                        VerticalAlignment="Bottom">
+
+                        <TextBlock
+                            Margin="0,25,0,35"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            TextWrapping="Wrap">
+                            <Run Text="1.选择steam库文件夹，即steam '设置'-&gt;'下载' 分类下的 '内容库'" /><LineBreak />
+                            <Run Text="2.输入游戏ID，starbound默认为211820" /><LineBreak />
+                            <Run Text="3.选择将要进行输出的文件夹" /><LineBreak />
+                            <Run Text="4.点击检查按钮，会在右方信息栏类输出基本信息" /><LineBreak />
+                            <Run Text="5.确认无误后，点击提取按钮进行提取" /><LineBreak />
+                        </TextBlock>
+                        <Label
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Content="----------使用说明----------"
+                            FontSize="14" />
+                    </Grid>
+
+                </Grid>
+            </GroupBox>
+            <GroupBox
+                Grid.Column="1"
+                Margin="10,10,10,10"
+                md:ColorZoneAssist.Background="#ff202020"
+                md:ColorZoneAssist.Foreground="White"
+                md:ColorZoneAssist.Mode="Custom"
+                md:ShadowAssist.ShadowDepth="Depth3"
+                Header="Info"
+                Style="{DynamicResource MaterialDesignCardGroupBox}">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <md:PackIcon
+                                Width="32"
+                                Height="32"
+                                VerticalAlignment="Center"
+                                Kind="FolderInformation" />
+                            <TextBlock
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                <Grid>
+                    <StackPanel VerticalAlignment="Top">
+                        <StackPanel Margin="0,5,0,0" VerticalAlignment="Top">
+                            <Label
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Top"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Content="----------基本信息----------"
+                                FontSize="14" />
+                            <Label
+                                x:Name="labelGameID"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Top"
+                                HorizontalContentAlignment="Left"
+                                VerticalContentAlignment="Center"
+                                Content="游戏ID："
+                                FontSize="14" />
+                            <Label
+                                x:Name="labelItemsAmount"
+                                VerticalAlignment="Top"
+                                HorizontalContentAlignment="Left"
+                                VerticalContentAlignment="Center"
+                                Content="寻找到项目数："
+                                FontSize="14" />
+                            <Label
+                                x:Name="labelSourceFolderPath"
+                                VerticalAlignment="Top"
+                                HorizontalContentAlignment="Left"
+                                VerticalContentAlignment="Center"
+                                Content="源目录："
+                                FontSize="14" />
+                            <Label
+                                x:Name="labelOutputFolderPath"
+                                VerticalAlignment="Top"
+                                HorizontalContentAlignment="Left"
+                                VerticalContentAlignment="Center"
+                                Content="输出目录："
+                                FontSize="14" />
+                        </StackPanel>
+                        <StackPanel Margin="0,10,0,0" HorizontalAlignment="Stretch">
+                            <Label
+                                VerticalAlignment="Top"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Content="----------状态----------"
+                                FontSize="14" />
+                            <Label
+                                x:Name="laberStats"
+                                VerticalAlignment="Top"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Content="待机"
+                                FontSize="14" />
+                            <Label
+                                x:Name="laberStatsInfo"
+                                Content=""
+                                FontSize="14" />
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Grid Height="200" VerticalAlignment="Bottom">
+                        <md:Chip
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Background="#FF006A9E"
+                            Content="Github"
+                            FontSize="18"
+                            Icon="{md:PackIcon Kind=Github,
+                                               Size=26}"
+                            IconBackground="{DynamicResource MaterialDesignDarkBackground}"
+                            IconForeground="#ffffffff" />
+
+                        <TextBlock
+                            Margin="0,25,0,35"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            TextWrapping="Wrap">
+                            <Run Text="这是一个用于将Steam游戏 Starbound 的创意工坊订阅内容批量复制并重命名的小工具，为了方便开服时为服务端添加mod文件。" /><LineBreak />
+                            <Run Text="*当前重命名只能将文件重命名为其在创意工坊内的ID" /><LineBreak />
+                            <Run Text="*当前只会移动与重命名'.pak'后缀的文件" /><LineBreak />
+                            <Run Text="·将于未来版本（如果有）加入新功能：" /><LineBreak />
+                            <Run Text="  【自动将文件重命名为其在创意工坊的标题】" /><LineBreak />
+                            <Run Text="  【可以移动文件夹类型的mod】" /><LineBreak />
+                        </TextBlock>
+                        <Label
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Content="----------关于----------"
+                            FontSize="14" />
+                        <Label
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Content="Version:1.0" />
+                    </Grid>
+                </Grid>
+            </GroupBox>
+
+        </Grid>
+
+    </md:ColorZone>
+</Window>
